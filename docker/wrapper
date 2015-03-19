@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+# Simple wrapper for "gmond2fluentd" executable.
+#
+# Usage:  wrapper  [arguments]
+#
+# Arguments:
+#   - all arguments supported by gmond2fluentd, excluding '-s' and '-d'.
+#
+# Expection:
+#   - link with an already-running gmond and fluentd server
+#     with container name (or alias) = "ganglia" and "fluentd".
+#
+
+EXE_FULLPATH=/opt/gmond2fluentd
+
+if [ "$1" = "file" ]; then
+    #echo "FILE\n"
+    shift
+    exec  $EXE_FULLPATH  file  \
+          -s ganglia:$GANGLIA_PORT_8649_TCP_PORT   "$@"
+
+elif [ "$1" = "tcp" ]; then
+    #echo "TCP\n"
+    shift
+    exec  $EXE_FULLPATH  tcp   \
+          -s ganglia:$GANGLIA_PORT_8649_TCP_PORT   \
+          -d fluentd:$FLUENTD_PORT_24224_TCP_PORT  "$@"
+
+else
+    #echo "OTHERS\n"
+    exec  $EXE_FULLPATH  "$@"
+
+fi

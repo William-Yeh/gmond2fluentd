@@ -1,0 +1,20 @@
+ganglia:
+    image: wookietreiber/ganglia
+    ports:
+        - "8649:8649"
+        - "80:80"
+
+fluentd:
+    image: williamyeh/fluentd
+    command: start --config /myconfig/fluentd-to-stdout.conf
+    ports:
+        - "24224:24224"
+    volumes:
+        - ".:/myconfig:ro"
+
+demotcp:
+    build: .
+    command: tcp --stdout
+    links:
+        - "ganglia:ganglia"
+        - "fluentd:fluentd"

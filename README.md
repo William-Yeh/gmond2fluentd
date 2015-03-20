@@ -42,13 +42,13 @@ $ go install github.com/docopt/docopt-go
 $ go build
 ```
 
-Or, build the *linux-amd64* executable for Docker:
+Or, build the *linux-amd64* executables for Docker:
 
 ```
 $ ./build.sh
 ```
 
-It will place the `gmond2fluentd_linux-amd64` executable into the `docker` directory.
+It will place the `gmond2fluentd_linux-amd64` and `gmond2fluentd_static_linux-amd64` executables into the `docker` directory.
 
 ## Demo
 
@@ -57,6 +57,7 @@ Please go to the the `docker` directory for more details.
 
 ### History
 
+- 0.2 - Static Go binary + pure busybox.
 - 0.1 - Initial release. 
 
 

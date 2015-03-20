@@ -7,18 +7,29 @@
 FROM golang:1.4.2
 MAINTAINER William Yeh <william.pjyeh@gmail.com>
 
-ENV EXE_NAME  gmond2fluentd_linux-amd64
+ENV EXE_NAME         gmond2fluentd_linux-amd64
+ENV EXE_STATIC_NAME  gmond2fluentd_static_linux-amd64
 ENV GOPATH    /opt 
 WORKDIR       /opt
 
 
-# compile...
+# fetch imported Go lib...
 COPY gmond2fluentd.go /opt/
 RUN  go get github.com/docopt/docopt-go
+
+# compile...
 RUN  go build -o $EXE_NAME
+
+#-- 
+#    @see Static build method changed in Go 1.4
+#         https://github.com/kelseyhightower/rocket-talk/issues/1
+#--
+RUN  CGO_ENABLED=0  \
+     go build -x -a -installsuffix nocgo \
+              -o $EXE_STATIC_NAME
 
 
 # copy executable
 RUN    mkdir -p /dist
 VOLUME [ "/dist" ]
-CMD    cp  $EXE_NAME  /dist
+CMD    cp  *_linux-amd64  /dist

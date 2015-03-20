@@ -64,11 +64,13 @@ Options:
 
 ### Dependencies
 
-- [progrium/busybox](https://registry.hub.docker.com/u/progrium/busybox/).
+- `scratch`.
+- [jpetazzo/docker-busybox](https://github.com/jpetazzo/docker-busybox)'s `rootfs.tar` on 2015-02-26.
 
 
 ### History
 
+- 0.2 - Static Go binary + pure busybox. 
 - 0.1 - Initial release. 
 
 

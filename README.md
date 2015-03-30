@@ -57,6 +57,7 @@ Please go to the the `docker` directory for more details.
 
 ### History
 
+- 0.3 - Static Go binary + DASH (without GPLv2 parts).
 - 0.2 - Static Go binary + pure busybox.
 - 0.1 - Initial release. 
 

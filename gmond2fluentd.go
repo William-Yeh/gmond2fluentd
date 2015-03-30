@@ -64,6 +64,7 @@ type MetricEntry map[string]string
 var REGEX_METRIC_TIME = regexp.MustCompile(`^\s*<HOST\s+NAME=.+REPORTED="?(\d+)"?`)
 var REGEX_METRIC_LINE = regexp.MustCompile(`^\s*<METRIC\s+(.+)>\s*$`)
 var REGEX_METRIC_ITEM_PAIR = regexp.MustCompile(`([^=]+)="?([^"]*)"?\s*`)
+//var REGEX_METRIC_GROUP_PAIR = regexp.MustCompile(`^\s*<EXTRA_ELEMENT\s+NAME="GROUP" VAL="?([^"]+)"?\s*/>`)
 
 func main() {
 	arguments := process_cmdline()

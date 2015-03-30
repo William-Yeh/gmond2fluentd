@@ -64,12 +64,12 @@ Options:
 
 ### Dependencies
 
-- `scratch`.
-- [jpetazzo/docker-busybox](https://github.com/jpetazzo/docker-busybox)'s `rootfs.tar` on 2015-02-26.
+- [`williamyeh/dash`](https://registry.hub.docker.com/u/williamyeh/dash/), a Docker image for static DASH (“the Debian Almquist Shell”) without GPLv2 parts.
 
 
 ### History
 
+- 0.3 - Static Go binary + DASH (without GPLv2 parts).
 - 0.2 - Static Go binary + pure busybox. 
 - 0.1 - Initial release. 
 
